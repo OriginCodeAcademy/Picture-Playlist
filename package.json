@@ -1,5 +1,5 @@
 {
-  "name": "Picture Playlist",
+  "name": "picture-playlist",
   "version": "1.0.0",
   "private": true,
   "description": "A converter that analyzes images and converts their characteristics into a playlist",
