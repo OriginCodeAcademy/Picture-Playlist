@@ -1,0 +1,28 @@
+{
+  "name": "Picture Playlist",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A converter that analyzes images and converts their characteristics into a playlist",
+  "scripts": {
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar src/scss/ -o src/css/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/scss/ -o src/css/ --watch --recursive"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": ".",
+  "devDependencies": {},
+  "dependencies": {
+    "axios": "^0.17.1",
+    "clarifai": "^2.5.0",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.1.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.13"
+  }
+}
