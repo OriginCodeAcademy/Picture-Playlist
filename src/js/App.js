@@ -6,6 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     
+    // inside of our state object, we set our API keys in order to get data from the APIs
     this.state = {
       clarifaiKey: 'b152ab226db545d7ae11f33a8756cda5',
       mashapeKey: '8T7epZZomNmshvkB0xHh8YgIgUhnp1mbZ8RjsnqijKFCpgCBCc',
@@ -14,9 +15,11 @@ class App extends Component {
 
   componentDidMount() {
 
-    /* Use Clarifai to grab models */
+    /* Use Clarifai to grab image details */
     this.getImageDetails().then((imageDetails) => {
-      console.log(imageDetails);
+
+      /* Find all the terms inside image details */
+      console.log('Image details from Clarifai', imageDetails);
 
       /* After, querying for words associated with an image, query those top 5 terms for songs */
       this.getMusicTerms();
@@ -24,6 +27,8 @@ class App extends Component {
   }
 
   getImageDetails() {
+
+      //images we are going to send to the api to get terms for
       var images = [
         'http://miriadna.com/desctopwalls/images/max/Wet-sand.jpg'
       ];
@@ -42,8 +47,9 @@ class App extends Component {
   }
 
   getMusicTerms() {
-
-      var query = 'water';
+    //using the image terms, make a query
+    var query = 'food';
+    
       axios({
         method: 'get',
         url: 'https://musixmatchcom-musixmatch.p.mashape.com/wsr/1.1/track.search?f_has_lyrics=1&page=1&page_size=5&q_track='+ query +'&s_track_rating=desc',
@@ -52,7 +58,7 @@ class App extends Component {
           'accept' : 'application/json'
         }
       }).then((res) => {
-        console.log(res);
+        console.log('Terms from Music Match API', res);
       }).catch(err => console.log(err));
   }
 
